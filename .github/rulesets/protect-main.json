@@ -33,7 +33,19 @@
                 "required_reviewers": []
             },
             "type": "pull_request"
-        }
+        },
+        {
+    "type": "required_status_checks",
+    "parameters": {
+        "strict_required_status_checks_policy": false,
+        "required_status_checks": [
+            {
+                "context": "pr-check",
+                "integration_id": 15368
+            }
+        ]
+    }
+}
     ],
     "target": "branch"
 }
