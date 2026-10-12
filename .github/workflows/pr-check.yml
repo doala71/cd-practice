@@ -1,0 +1,25 @@
+name: PR check
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  pr-check:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate ruleset JSON
+        run: |
+          for f in .github/rulesets/*.json; do
+            python3 -m json.tool "$f" > /dev/null
+            echo "OK: $f"
+          done
+
+      - name: Check site has index.html
+        run: test -f site/index.html
