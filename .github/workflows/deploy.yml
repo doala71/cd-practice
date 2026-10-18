@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check secret visibility
         env:
           DUMMY_SECRET: ${{ secrets.DUMMY_SECRET }}
@@ -31,7 +31,7 @@ jobs:
           cp -r site/. _site/
           sed -i "s/__COMMIT__/${GITHUB_SHA}/" _site/index.html
           sed -i "s|__TITLE__|${SITE_TITLE}|g" _site/index.html
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: _site/
 
@@ -52,4 +52,4 @@ jobs:
           if [ -n "$DUMMY_SECRET" ]; then echo "deploy: secret is available"; else echo "deploy: secret is NOT available"; fi
           echo "value: $DUMMY_SECRET"
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
