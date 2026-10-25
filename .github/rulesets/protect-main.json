@@ -35,17 +35,30 @@
             "type": "pull_request"
         },
         {
-    "type": "required_status_checks",
-    "parameters": {
-        "strict_required_status_checks_policy": false,
-        "required_status_checks": [
-            {
-                "context": "pr-check",
-                "integration_id": 15368
-            }
-        ]
-    }
-}
+            "parameters": {
+                "do_not_enforce_on_create": false,
+                "required_status_checks": [
+                    {
+                        "context": "pr-check",
+                        "integration_id": 15368
+                    }
+                ],
+                "strict_required_status_checks_policy": false
+            },
+            "type": "required_status_checks"
+        },
+        {
+            "parameters": {
+                "code_scanning_tools": [
+                    {
+                        "alerts_threshold": "errors",
+                        "security_alerts_threshold": "high_or_higher",
+                        "tool": "CodeQL"
+                    }
+                ]
+            },
+            "type": "code_scanning"
+        }
     ],
     "target": "branch"
 }
